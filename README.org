@@ -1,0 +1,37 @@
+* Introduction
+  This repo contains my personal emacs configuration combined with instrustions on how to install my setup on a clean OSX lion machine.
+  The configuration is primalry used for working on Ruby on Rails projects.
+
+* Requirements
+  In my current setup I have installed emacs and git trough howbrew.
+
+** Homebrew
+   Make sure to install Xcode from the Mac OSX App Store
+   : /usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
+   Futher instructions https://github.com/mxcl/homebrew/wiki/installation.
+
+** Git
+   : brew install git
+   This will install the latest version of git trough homebrew.
+
+** Emacs
+   : brew install emacs --use-git-head --HEAD
+   This will install the latests emacs from source which is currently version 24.
+
+* Install
+  Clone the repo into ~/.emacs.d
+  : git clone git@github.com:rkoster/emacs.d.git ~/.emacs.d
+  
+  Init submodules
+  : cd ~/.emacs.d
+  : git submodule init
+  : git submodule update
+
+  Start emacs
+  : emacs
+  It will install all plugins
+
+* Keybindings
+  | C-x C-z | magit-status       | emacs git mode           |
+  | C-x C-g | textmate-goto-file | quick project go to file |
+
