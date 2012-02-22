@@ -19,6 +19,11 @@
 
 (load-theme 'manoj-dark)
 
+;(autoload 'js-mode "js-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
+(add-hook 'js-mode-hook '(lambda()
+                           (setq js-indent-level 2)))
+
 (defun ruby-mode-hook ()
   (autoload 'ruby-mode "ruby-mode" nil t)
   (add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
@@ -45,15 +50,18 @@
   (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
   (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode)))
 
+(defun less-css-mode-hook ()
+  (autoload 'less-css-mode "less-css-mode" nil t)
+  (add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode)))
+
 (defun css-mode-hook ()
   (autoload 'css-mode "css-mode" nil t)
   (add-hook 'css-mode-hook '(lambda ()
                               (setq css-indent-level 2)
                               (setq css-indent-offset 2))))
 
-;; Key strokes
-(global-set-key (kbd "C-x g") 'textmate-goto-file)
-
+(defun textmate-hook ()
+  (global-set-key (kbd "C-x g") 'textmate-goto-file))
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (require 'el-get)
@@ -71,7 +79,8 @@
         (:name textmate
                :type git
                :url "git://github.com/defunkt/textmate.el"
-               :load "textmate.el")
+               :load "textmate.el"
+               :after (lambda() (textmate-hook)))
         (:name rvm
                :type git
                :url "http://github.com/djwhitt/rvm.el.git"
@@ -83,8 +92,13 @@
                :url "https://github.com/eschulte/rhtml.git"
                :features rhtml-mode
                :after (lambda () (rhtml-mode-hook)))
+        (:name less-css-mode
+               :type git
+               :url "git://github.com/purcell/less-css-mode.git"
+               :features less-css-mode
+               :after (lambda () (less-css-mode-hook)))
         (:name magit
-               :after (lambda () (global-set-key (kbd "C-x C-z") 'magit-status))) 
+               :after (lambda () (global-set-key (kbd "C-x C-z") 'magit-status)))
         (:name yaml-mode 
                :type git
                :url "http://github.com/yoshiki/yaml-mode.git"

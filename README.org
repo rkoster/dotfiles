@@ -8,7 +8,7 @@
 ** Homebrew
    Make sure to install Xcode from the Mac OSX App Store
    : /usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
-   Futher instructions https://github.com/mxcl/homebrew/wiki/installation.
+   Futher instructions can be found [[ https://github.com/mxcl/homebrew/wiki/installation][here]]
 
 ** Git
    : brew install git
@@ -30,8 +30,15 @@
   Start emacs
   : emacs
   It will install all plugins
-
+  
 * Keybindings
-  | C-x C-z | magit-status       | emacs git mode           |
-  | C-x C-g | textmate-goto-file | quick project go to file |
+** Custom
+   | C-x C-z | magit-status       | Emacs git mode           |
+   | C-x C-g | textmate-goto-file | Quick project go to file |
+
+** Default
+   | M-/   | dabbrev-expand | Expand the word in the buffer before point |
+   | C-M-\ | indent-region  | Indent each nonblank line in the region    |
+
+  
 
