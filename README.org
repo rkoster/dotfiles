@@ -34,7 +34,8 @@
 * Keybindings
 ** Custom
    | C-x C-z | magit-status       | Emacs git mode           |
-   | C-x C-g | textmate-goto-file | Quick project go to file |
+   | C-x g   | textmate-goto-file | Quick project go to file |
+   | C-x r   | touch              | Used for guard-rpsec     |
 
 ** Default
    | M-/   | dabbrev-expand | Expand the word in the buffer before point |

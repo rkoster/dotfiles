@@ -19,10 +19,16 @@
 
 (load-theme 'manoj-dark)
 
-;(autoload 'js-mode "js-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
-(add-hook 'js-mode-hook '(lambda()
-                           (setq js-indent-level 2)))
+;; Use the clipboard, pretty please, so that copy/paste "works"
+;; (defun yank-to-x-clipboard ()
+;;   (interactive)
+;;   (if (region-active-p)
+;;         (progn
+;;           (shell-command-on-region (region-beginning) (region-end) "xsel -i")
+;;           (message "Yanked region to clipboard!")
+;;           (deactivate-mark))
+;;     (message "No region active; can't yank to clipboard!")))
+;;(global-set-key [f8] 'yank-to-x-clipboard)
 
 (defun ruby-mode-hook ()
   (autoload 'ruby-mode "ruby-mode" nil t)
@@ -63,8 +69,17 @@
 (defun textmate-hook ()
   (global-set-key (kbd "C-x g") 'textmate-goto-file))
 
+(require 'cl)
+
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-(require 'el-get)
+
+(unless (require 'el-get nil t)
+  (url-retrieve
+   "https://github.com/dimitri/el-get/raw/master/el-get-install.el"
+   (lambda (s)
+     (end-of-buffer)
+     (eval-print-last-sexp))))
+
 
 (setq el-get-sources
       '((:name ruby-mode 
@@ -107,8 +122,21 @@
 
 (setq my-packages 
       (append 
-       '(org-mode)
+       '(org-mode coffee-mode)
        (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync my-packages)
 
+;;(autoload 'js-mode "js-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
+(add-hook 'js-mode-hook '(lambda()
+                           (setq js-indent-level 2)))
+
+
+(defun touch ()
+  "Updates mtime of the file for the current buffer"
+  (interactive)
+  (shell-command (concat "touch " (shell-quote-argument (buffer-file-name))))
+  (clear-visited-file-modtime))
+
+(global-set-key (kbd "C-x r") 'touch)
