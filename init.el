@@ -132,6 +132,13 @@
 (add-hook 'js-mode-hook '(lambda()
                            (setq js-indent-level 2)))
 
+;;enable windmove
+(when (fboundp 'windmove-default-keybindings)
+  (global-set-key (kbd "C-x a") 'windmove-left)
+  (global-set-key (kbd "C-x e") 'windmove-right)
+  (global-set-key (kbd "C-x p") 'windmove-up)
+  (global-set-key (kbd "C-x n") 'windmove-down))
+
 
 (defun touch ()
   "Updates mtime of the file for the current buffer"

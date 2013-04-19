@@ -37,6 +37,12 @@
    | C-x g   | textmate-goto-file | Quick project go to file |
    | C-x r   | touch              | Used for guard-rpsec     |
 
+*** Window Move
+    | C-x a | windmove-left  | 
+    | C-x e | windmove-right | 
+    | C-x p | windmove-up    | 
+    | C-x n | windmove-down  | 
+
 ** Default
    | M-/   | dabbrev-expand | Expand the word in the buffer before point |
    | C-M-\ | indent-region  | Indent each nonblank line in the region    |
