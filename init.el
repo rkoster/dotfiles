@@ -17,8 +17,6 @@
 (column-number-mode t)
 (ido-mode t)
 
-(load-theme 'manoj-dark)
-
 ;; Use the clipboard, pretty please, so that copy/paste "works"
 ;; (defun yank-to-x-clipboard ()
 ;;   (interactive)
@@ -69,7 +67,10 @@
 (defun textmate-hook ()
   (global-set-key (kbd "C-x g") 'textmate-goto-file))
 
-(require 'cl)
+(defun solarized-hook ()
+  (load-theme 'solarized-dark t))
+
+(require 'cl-lib)
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
@@ -85,40 +86,45 @@
       '((:name ruby-mode 
                :type elpa
                :load "ruby-mode.el"
-               :after (lambda () (ruby-mode-hook)))
+               :after (progn (ruby-mode-hook)))
         (:name inf-ruby  :type elpa)
         (:name ruby-compilation :type elpa)
         (:name css-mode 
                :type elpa
-               :after (lambda () (css-mode-hook)))
+               :after (progn (css-mode-hook)))
         (:name textmate
                :type git
                :url "git://github.com/defunkt/textmate.el"
                :load "textmate.el"
-               :after (lambda() (textmate-hook)))
+               :after (progn (textmate-hook)))
         (:name rvm
                :type git
                :url "http://github.com/djwhitt/rvm.el.git"
                :load "rvm.el"
                :compile ("rvm.el")
-               :after (lambda() (rvm-use-default)))
+               :after (progn (rvm-use-default)))
         (:name rhtml
                :type git
                :url "https://github.com/eschulte/rhtml.git"
                :features rhtml-mode
-               :after (lambda () (rhtml-mode-hook)))
+               :after (progn (rhtml-mode-hook)))
         (:name less-css-mode
                :type git
                :url "git://github.com/purcell/less-css-mode.git"
                :features less-css-mode
-               :after (lambda () (less-css-mode-hook)))
+               :after (progn (less-css-mode-hook)))
         (:name magit
-               :after (lambda () (global-set-key (kbd "C-x C-z") 'magit-status)))
+               :after (progn (global-set-key (kbd "C-x C-g") 'magit-status)))
+        (:name color-theme :type elpa)
+        (:name color-theme-solarized
+                :type elpa
+                :load "color-theme-solarized.el"
+                :after (progn (solarized-hook)))
         (:name yaml-mode 
                :type git
                :url "http://github.com/yoshiki/yaml-mode.git"
                :features yaml-mode
-               :after (lambda () (yaml-mode-hook)))))
+               :after (progn (yaml-mode-hook)))))
 
 (setq my-packages 
       (append 

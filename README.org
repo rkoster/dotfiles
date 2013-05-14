@@ -33,7 +33,7 @@
   
 * Keybindings
 ** Custom
-   | C-x C-z | magit-status       | Emacs git mode           |
+   | C-x C-g | magit-status       | Emacs git mode           |
    | C-x g   | textmate-goto-file | Quick project go to file |
    | C-x r   | touch              | Used for guard-rpsec     |
 
