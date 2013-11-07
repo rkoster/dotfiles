@@ -70,17 +70,10 @@
 (defun solarized-hook ()
   (load-theme 'solarized-dark t))
 
-(require 'cl-lib)
+(require 'cl)
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-
-(unless (require 'el-get nil t)
-  (url-retrieve
-   "https://github.com/dimitri/el-get/raw/master/el-get-install.el"
-   (lambda (s)
-     (end-of-buffer)
-     (eval-print-last-sexp))))
-
+(require 'el-get)
 
 (setq el-get-sources
       '((:name ruby-mode 
@@ -126,12 +119,13 @@
                :features yaml-mode
                :after (progn (yaml-mode-hook)))))
 
-(setq my-packages 
-      (append 
-       '(org-mode coffee-mode)
-       (mapcar 'el-get-source-name el-get-sources)))
+;;(setq my-packages 
+;;      (append 
+;;       '(org-mode coffee-mode)
+;;       (mapcar 'el-get-source-name el-get-sources)))
 
-(el-get 'sync my-packages)
+;;(el-get 'sync my-packages)
+(el-get 'sync)
 
 ;;(autoload 'js-mode "js-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
