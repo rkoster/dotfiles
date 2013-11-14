@@ -52,6 +52,9 @@ source $ZSH/oh-my-zsh.sh
 # Set editor
 export EDITOR="emacs"
 
+# Fix emacs colors
+alias emacs='TERM=xterm-16color emacs -nw'
+
 # Setup homebrew
 export PATH=/usr/local/bin:$PATH
 
