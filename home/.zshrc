@@ -52,6 +52,9 @@ source $ZSH/oh-my-zsh.sh
 # Set editor
 export EDITOR="emacs"
 
+# Setup homebrew
+export PATH=/usr/local/bin:$PATH
+
 # Setup Go
 export GOPATH=~/.go
 export PATH=~/.go/bin:$PATH
