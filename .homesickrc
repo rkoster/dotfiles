@@ -1,0 +1,2 @@
+echo "Installing Emacs Prelude"
+curl -L http://git.io/epre | sh

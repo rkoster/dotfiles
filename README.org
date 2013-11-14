@@ -1,0 +1,5 @@
+* Using
+  : gem install homesick
+  : homesick clone rkoster/dotfiles
+  : homesick rc
+  : homesick symlink
