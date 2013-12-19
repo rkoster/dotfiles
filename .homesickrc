@@ -1,2 +1,2 @@
-echo "Installing Emacs Prelude"
-curl -L http://git.io/epre | sh
+p "Installing Emacs Prelude"
+exec("curl -L http://git.io/epre | sh")
