@@ -62,6 +62,9 @@ export PATH=/usr/local/bin:$PATH
 export GOPATH=~/.go
 export PATH=~/.go/bin:$PATH
 
+# Set default vagrant provider
+export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
+
 # Setup Python paths
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages
 
