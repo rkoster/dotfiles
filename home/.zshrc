@@ -55,6 +55,9 @@ export EDITOR="emacs"
 # Fix emacs colors
 alias emacs='TERM=xterm-16color emacs -nw'
 
+# json-prettify
+alias json-prettify="ruby -e \"require 'json'; puts (JSON.pretty_generate JSON.parse(STDIN.read))\""
+
 # Setup homebrew
 export PATH=/usr/local/bin:$PATH
 
