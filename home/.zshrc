@@ -78,6 +78,13 @@ export PYTHONPATH=/usr/local/lib/python2.7/site-packages
 alias cf='nocorrect cf'
 alias bosh='nocorrect bosh'
 
+function bosh() {
+    case $* in
+        -n* ) shift 1; command bosh -n "$@" && tput bel || tput bel;;
+        * ) command bosh "$@" ;;
+    esac
+}
+
 # Add RVM to PATH for scripting
 PATH=$PATH:$HOME/.rvm/bin
 
