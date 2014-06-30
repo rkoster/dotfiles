@@ -80,3 +80,7 @@ alias bosh='nocorrect bosh'
 
 # Add RVM to PATH for scripting
 PATH=$PATH:$HOME/.rvm/bin
+
+# Set bosh-lite size
+export VM_MEMORY=10240
+export VM_CORES=4
