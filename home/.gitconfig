@@ -4,3 +4,5 @@
 	editor = emacs
 [core]
 	editor = emacs
+[push]
+	default = simple

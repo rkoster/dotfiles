@@ -43,7 +43,7 @@ export TERM=xterm-256color
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rvm rails gem bundler brew knife vagrant tmux)
+plugins=(git rvm rails gem bundler brew knife vagrant tmux docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,3 +91,19 @@ PATH=$PATH:$HOME/.rvm/bin
 # Set bosh-lite size
 export VM_MEMORY=10240
 export VM_CORES=4
+
+
+# Boot to docker helpers
+# from https://github.com/abesto/dotfiles/blob/master/.oh-my-zsh/custom/boot2docker.zsh
+export_boot2docker() {
+    export DOCKER_HOST=$(boot2docker socket 2>/dev/null)
+
+}
+
+start_boot2docker() {
+    boot2docker ip 2>/dev/null >/dev/null || boot2docker up
+    export_boot2docker
+
+}
+
+export_boot2docker
