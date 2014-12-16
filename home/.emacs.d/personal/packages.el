@@ -1,5 +1,6 @@
 ;;; package --- Installs additional packages
 ;;; Code:
+;; rvm
 (prelude-require-package 'rvm)
 (require 'rvm)
 (add-hook 'ruby-mode-hook
@@ -16,6 +17,10 @@
   (guru-mode -1)
 )
 (add-hook 'prelude-prog-mode-hook 'disable-guru-mode t)
+
+;; groovy mode
+(prelude-require-package 'groovy-mode)
+
 
 (provide 'packages)
 ;;; theme.el ends here
