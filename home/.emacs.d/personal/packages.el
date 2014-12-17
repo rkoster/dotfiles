@@ -2,21 +2,14 @@
 ;;; Code:
 ;; rvm
 (prelude-require-package 'rvm)
-(require 'rvm)
 (add-hook 'ruby-mode-hook
           (lambda () (rvm-activate-corresponding-ruby)))
 
 ;; go mode
-(setq load-path (cons "/usr/local/go/misc/emacs" load-path))
-(require 'go-mode-load)
-(setq prelude-whitespace nil)
-(setq tab-width 2)
-(setq-default tab-width 2)
-
-(defun disable-guru-mode ()
-  (guru-mode -1)
-)
-(add-hook 'prelude-prog-mode-hook 'disable-guru-mode t)
+(defun my-go-mode-hook ()
+  (setq tab-width 2)
+  (setq-default tab-width 2))
+(add-hook 'go-mode-hook 'my-go-mode-hook)
 
 ;; groovy mode
 (prelude-require-package 'groovy-mode)
