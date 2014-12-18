@@ -66,7 +66,7 @@ export PATH=/usr/local/bin:$PATH
 
 # Setup Go
 export GOPATH=~/.go
-export PATH=~/.go/bin:$PATH
+export PATH=$GOPATH/bin:$PATH
 
 # Set default vagrant provider
 export VAGRANT_DEFAULT_PROVIDER=vmware_fusion

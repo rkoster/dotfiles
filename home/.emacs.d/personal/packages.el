@@ -8,7 +8,9 @@
 ;; go mode
 (defun my-go-mode-hook ()
   (setq tab-width 2)
-  (setq-default tab-width 2))
+  (setq-default tab-width 2)
+  (setq whitespace-line-column 120)
+  (load-file "$GOPATH/src/code.google.com/p/go.tools/cmd/oracle/oracle.el"))
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
 ;; groovy mode

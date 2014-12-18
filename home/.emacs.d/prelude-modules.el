@@ -5,6 +5,7 @@
 (require 'prelude-emacs-lisp)
 (require 'prelude-erc)
 (require 'prelude-go)
+(require 'prelude-company)
 (require 'prelude-js)
 (require 'prelude-lisp)
 (require 'prelude-org)
