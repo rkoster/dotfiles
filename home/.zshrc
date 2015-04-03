@@ -107,3 +107,7 @@ start_boot2docker() {
 }
 
 export_boot2docker
+
+# Fix locale
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
