@@ -16,6 +16,8 @@
 ;; groovy mode
 (prelude-require-package 'groovy-mode)
 
+;; floobits
+(prelude-require-package 'floobits)
 
 (provide 'packages)
 ;;; theme.el ends here
