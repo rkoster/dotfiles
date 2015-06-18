@@ -4,5 +4,6 @@
 	editor = emacs
 [core]
 	editor = emacs
+	excludesfile = ~/.gitignore
 [push]
 	default = simple
