@@ -43,7 +43,7 @@ export TERM=xterm-256color
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rvm rails gem bundler brew knife vagrant tmux docker)
+plugins=(git rvm rails gem bundler brew knife vagrant tmux docker cf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -72,7 +72,7 @@ export PATH=$GOPATH/bin:$PATH
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
 # Setup Python paths
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages
+export PYTHONPATH=/usr/local/lib/python3.5/site-packages
 
 # Disable autocorrect form some commands
 alias cf='nocorrect cf'
@@ -117,3 +117,21 @@ export_boot2docker
 # Fix locale
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+# jq templates
+jq_templates() {
+    find -L templates -name \*.yml -exec \
+         echo "echo '\x1B[33m{}\x1B[39m'; cat {} | yaml2json | jq '$1'" \; | \
+        sh 2>&1 | grep -v null
+}
+
+# current bosh deployment
+bosh_deployment() {
+    cat ~/.bosh_config | yaml2json | jq -r 'getpath(["deployment", .target])'
+}
+
+# jq deployment
+jq_deployment() {
+    d=`cat ~/.bosh_config | yaml2json | jq -r 'getpath(["deployment", .target])'`
+    cat $d | yaml2json | jq "$1"
+}
