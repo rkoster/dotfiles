@@ -122,7 +122,14 @@ export LANG=en_US.UTF-8
 jq_templates() {
     find -L templates -name \*.yml -exec \
          echo "echo '\x1B[33m{}\x1B[39m'; cat {} | yaml2json | jq '$1'" \; | \
-        sh 2>&1 | grep -v null
+        sh 2>&1 | sed '$!N;/null/d;P;D'
+}
+
+# jq deployments
+jq_deployments() {
+    find -L deployments -name \*.yml -exec \
+         echo "echo '\x1B[33m{}\x1B[39m'; cat {} | yaml2json | jq '$1'" \; | \
+        sh 2>&1 | sed '$!N;/null/d;P;D'
 }
 
 # current bosh deployment
