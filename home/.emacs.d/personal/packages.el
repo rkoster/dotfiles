@@ -21,6 +21,10 @@
 ;; groovy mode
 (prelude-require-package 'groovy-mode)
 
+;; wgrep and iedit
+(prelude-require-package 'wgrep)
+(prelude-require-package 'iedit)
+
 ;; floobits
 (prelude-require-package 'floobits)
 
