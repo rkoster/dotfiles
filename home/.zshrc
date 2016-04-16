@@ -68,6 +68,9 @@ export PATH=/usr/local/bin:$PATH
 export GOPATH=~/.go
 export PATH=$GOPATH/bin:$PATH
 
+# Direnv
+eval "$(direnv hook zsh)"
+
 # Set default vagrant provider
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
