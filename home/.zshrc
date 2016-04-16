@@ -96,26 +96,10 @@ export VM_MEMORY=10240
 export VM_CORES=4
 
 
-# Boot to docker helpers
-# from https://github.com/abesto/dotfiles/blob/master/.oh-my-zsh/custom/boot2docker.zsh
-export_boot2docker() {
-    export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
-    export DOCKER_TLS_VERIFY=1
-    export DOCKER_HOST=$(boot2docker socket 2>/dev/null)
-
+start_docker() {
+    docker-machine start
+    eval $(docker-machine env)
 }
-
-start_boot2docker() {
-    boot2docker ip 2>/dev/null >/dev/null || boot2docker up
-    boot2docker shellinit
-    export_boot2docker
-
-}
-
-export_boot2docker
-# export DOCKER_HOST=tcp://192.168.99.100:2376
-# export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
-# export DOCKER_TLS_VERIFY=1
 
 # Fix locale
 export LC_ALL=en_US.UTF-8
