@@ -5,6 +5,17 @@
 (add-hook 'ruby-mode-hook
           (lambda () (rvm-activate-corresponding-ruby)))
 
+;; elm mode
+(prelude-require-package 'elm-mode)
+(prelude-require-package 'flycheck-elm)
+(defun my-elm-mode-hook ()
+  (add-to-list 'company-backends 'company-elm)
+  (setq elm-tags-on-sav t)
+  (flycheck-mode)
+  (setq elm-format-on-save t))
+(add-hook 'elm-mode-hook 'my-elm-mode-hook)
+(add-hook 'flycheck-mode-hook 'flycheck-elm-setup)
+
 ;; go mode
 (defun my-go-mode-hook ()
   (setq tab-width 2)
