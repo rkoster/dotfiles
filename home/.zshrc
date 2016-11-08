@@ -132,3 +132,5 @@ jq_deployment() {
     d=`cat ~/.bosh_config | yaml2json | jq -r 'getpath(["deployment", .target])'`
     cat $d | yaml2json | jq "$1"
 }
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
