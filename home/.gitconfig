@@ -2,8 +2,18 @@
 	name = Ruben Koster
 	email = rkoster@starkandwayne.com
 	editor = emacs
+	signingke = 493F39CE
+	signingkey = 493F39CE
 [core]
 	editor = emacs
 	excludesfile = ~/.gitignore
 [push]
 	default = simple
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
+[commit]
+	gpgsign = false
+[credential]
+	helper = osxkeychain
