@@ -71,6 +71,9 @@ export PATH=$GOPATH/bin:$PATH
 # Direnv
 eval "$(direnv hook zsh)"
 
+# Setup jenv
+eval "$(jenv init -)"
+
 # Set default vagrant provider
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
