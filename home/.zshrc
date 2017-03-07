@@ -62,11 +62,14 @@ alias tmux='tmux -u'
 alias json-prettify="ruby -e \"require 'json'; puts (JSON.pretty_generate JSON.parse(STDIN.read))\""
 
 # Setup homebrew
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/sbin:/usr/local/bin:$PATH
 
 # Setup Go
 export GOPATH=~/.go
 export PATH=$GOPATH/bin:$PATH
+
+# Add snowwhite
+export PATH=$HOME/workspace/bosh-lites/bin:$PATH
 
 # Direnv
 eval "$(direnv hook zsh)"
@@ -76,9 +79,6 @@ eval "$(jenv init -)"
 
 # Set default vagrant provider
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
-
-# Setup Python paths
-export PYTHONPATH=/usr/local/lib/python3.5/site-packages
 
 # Disable autocorrect form some commands
 alias cf='nocorrect cf'
@@ -134,3 +134,12 @@ jq_deployment() {
 }
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/rubenkoster/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/rubenkoster/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/rubenkoster/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/rubenkoster/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# bosh2 auto-complete
+source /usr/local/etc/bash_completion.d/bosh-cli
